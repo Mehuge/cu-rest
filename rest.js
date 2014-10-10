@@ -1,5 +1,3 @@
-/// <reference path="./jquery.d.ts" />
-
 var Rest;
 (function (Rest) {
     var servers = [], server = "Hatchery";
@@ -109,6 +107,11 @@ var Rest;
         return call("game/boons");
     }
     Rest.getBoons = getBoons;
+
+    function getAttributes() {
+        return call("game/attributes");
+    }
+    Rest.getAttributes = getAttributes;
 
     function getCharacters(loginToken) {
         return call("characters", { query: { loginToken: loginToken } });

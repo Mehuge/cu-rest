@@ -1,5 +1,5 @@
-/// <reference path="./jquery.d.ts" />
 declare var Promise: any;
+declare var $: JQueryStatic;
 
 module Rest {
 
@@ -99,6 +99,10 @@ module Rest {
 
     export function getBoons() {
         return call("game/boons");
+    }
+
+    export function getAttributes() {
+        return call("game/attributes");
     }
 
     export function getCharacters(loginToken: string) {
