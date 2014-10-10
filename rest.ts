@@ -1,4 +1,4 @@
-/// <reference path="../vendor/jquery.d.ts" />
+/// <reference path="./jquery.d.ts" />
 declare var Promise: any;
 
 module Rest {
