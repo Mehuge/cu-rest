@@ -54,6 +54,7 @@ module Rest {
                 data: params.query,
                 async: true, cache: false,
                 accepts: params.accepts || "text/json",
+                timeout: params.timeout,
                 contentType: params.contentType,
                 error: function (jqXHR: JQueryXHR, textStatus: string, errorThrown: string) {
                     reject(textStatus, errorThrown, jqXHR);
@@ -90,7 +91,7 @@ module Rest {
     }
 
     export function getControlGame() {
-        return call("game/controlgame");
+        return call("game/controlgame", { timeout: 2000 });
     }
 
     export function getBanes() {

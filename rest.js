@@ -52,6 +52,7 @@ var Rest;
                 data: params.query,
                 async: true, cache: false,
                 accepts: params.accepts || "text/json",
+                timeout: params.timeout,
                 contentType: params.contentType,
                 error: function (jqXHR, textStatus, errorThrown) {
                     reject(textStatus, errorThrown, jqXHR);
@@ -94,7 +95,7 @@ var Rest;
     Rest.getPlayers = getPlayers;
 
     function getControlGame() {
-        return call("game/controlgame");
+        return call("game/controlgame", { timeout: 2000 });
     }
     Rest.getControlGame = getControlGame;
 
