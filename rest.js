@@ -80,17 +80,17 @@ var Rest;
     Rest.getServers = getServers;
 
     function getFactions() {
-        return call("game/factions");
+        return call("game/factions", { timeout: 2000 });
     }
     Rest.getFactions = getFactions;
 
     function getRaces() {
-        return call("game/races");
+        return call("game/races", { timeout: 2000 });
     }
     Rest.getRaces = getRaces;
 
     function getPlayers() {
-        return call("game/players");
+        return call("game/players", { timeout: 2000 });
     }
     Rest.getPlayers = getPlayers;
 

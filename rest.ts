@@ -79,15 +79,15 @@ module Rest {
     }
 
     export function getFactions() {
-        return call("game/factions");
+        return call("game/factions", { timeout: 2000 });
     }
 
     export function getRaces() {
-        return call("game/races");
+        return call("game/races", { timeout: 2000 });
     }
 
     export function getPlayers() {
-        return call("game/players");
+        return call("game/players", { timeout: 2000 });
     }
 
     export function getControlGame() {
