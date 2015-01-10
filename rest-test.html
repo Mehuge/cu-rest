@@ -1,7 +1,7 @@
 ﻿<html>
 <head>
-    <script src="../vendor/jquery-2.1.1.js"></script>
-    <script src="../cu-rest/rest.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="rest.js"></script>
     <script>
 		function run(what) {
 			Rest.call(what).then(function(data) {
@@ -105,11 +105,25 @@
             left: 80%;
         }
         .boons #icon {
-            left: 0%;
-            width: 5%;
+            left: 0.5em;
+            width: 16px;
         }
         .boons #name {
-            left: 5%;
+            left: 2em;
+            width: 10em;
+        }
+
+        #description { 
+            left: 13em;
+            width: 50%; 
+        }
+
+        #ranks, #requires, #category, #catid, #cost {
+            display:none;
+        }
+        #icon img {
+            width: 16px;
+            height: 16px;
         }
     </style>
 </head>
@@ -268,7 +282,7 @@
 			        Rest.getBoons().then(function (boons) {
 			            for (var i = 0; i < boons.length; i++) {
 			                item(content, "item",
-						    '<div id="icon"><img src="' + boons[i].icon + '"/></div>'
+						    '<div id="icon"><img src="' + boons[i].icon.substr(3) + '"/></div>'
 							    + '<div id="name">' + boons[i].name + '</div>'
 								+ '<div id="description">' + boons[i].description + '</div>'
 								+ '<div id="ranks">' + boons[i].maxRanks + '</div>'
