@@ -3,9 +3,9 @@ declare var $: JQueryStatic;
 
 module Rest {
 
-    var servers = [], server: string = "Hatchery";
+    var servers:any[] = [], server: string = "Hatchery";
 
-    function getServerInfo(server?: string) {
+    function getServerInfo(server?: string) : any {
         var domain : string = "camelotunchained.com";
         if (server) {
             for (var i = 0; i < servers.length; i++) {
@@ -42,12 +42,12 @@ module Rest {
         return protocol + "//" + host + ":" + port + "/api/";
     }
 
-    export function call(verb, params?) {
+    export function call(verb : string, params?:any) {
         var serverURI = getServerURI(verb);
 
         // Raw call the CU RESI API, returns a promise
         params = params || {};
-        return new Promise(function (fulfill, reject) {
+        return new Promise(function (fulfill: (data: any) => void, reject: (status: string, errorThrown: string, jqXHR: JQueryXHR) => void) {
             $.ajax({
                 url: serverURI + verb,
                 type: params.type || "GET",
@@ -70,8 +70,8 @@ module Rest {
     }
 
     export function getServers() {
-        return new Promise(function (fulfill, reject) {
-            call("servers").then(function (list) {
+        return new Promise(function (fulfill: (data: any) => void, reject: (status: string, errorThrown: string, jqXHR: JQueryXHR) => void) {
+            call("servers").then(function (list:any[]) {
                 servers = list;
                 fulfill(servers);
             }, reject);
@@ -90,8 +90,8 @@ module Rest {
         return call("game/players", { timeout: 2000 });
     }
 
-    export function getControlGame() {
-        return call("game/controlgame", { timeout: 2000 });
+    export function getControlGame(query:any) {
+        return call("game/controlgame", { query: query, timeout: 2000 });
     }
 
     export function getBanes() {
@@ -126,7 +126,7 @@ module Rest {
         return call("scheduledevents");
     }
 
-    export function getKills(query) {
+    export function getKills(query:any) {
         return call("kills", { query: query });
     }
 }
